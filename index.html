@@ -11,6 +11,7 @@
             --text: #0f172a;
             --accent: #10b981;
         }
+
         body {
             margin: 0;
             font-family: 'Segoe UI', Roboto, sans-serif;
@@ -18,6 +19,8 @@
             color: var(--text);
             padding-bottom: 100px;
         }
+
+        /* Modern Header */
         .header {
             background: #ffffff;
             padding: 15px 20px;
@@ -29,7 +32,9 @@
             z-index: 1000;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
+
         .logo { font-size: 22px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
+
         .profile-trigger {
             background: #f1f5f9;
             padding: 8px 15px;
@@ -38,6 +43,8 @@
             font-weight: 600;
             cursor: pointer;
         }
+
+        /* Search & Categories */
         .sticky-controls {
             background: #fff;
             position: sticky;
@@ -46,6 +53,7 @@
             padding: 10px 0;
             border-bottom: 1px solid #e2e8f0;
         }
+
         .search-box {
             margin: 0 15px 10px;
             background: #f1f5f9;
@@ -53,66 +61,32 @@
             padding: 12px;
             display: flex;
             align-items: center;
-            gap: 8px;
         }
+
         .search-box input {
             background: transparent;
             border: none;
             outline: none;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .controls-row {
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            gap: 10px;
+        }
+
+        .category-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 8px;
             flex: 1;
-            font-size: 16px;
         }
-        .filter-btn {
-            background: white;
-            border: none;
-            border-radius: 8px;
-            padding: 0;
-            font-size: 22px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 36px;
-            height: 36px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            flex-shrink: 0;
-        }
-        .filter-btn.active { background: var(--primary); color: white; }
-        .filter-modal {
-            display: none;
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            background: white;
-            border-radius: 20px 20px 0 0;
-            padding: 20px;
-            z-index: 2001;
-            box-shadow: 0 -4px 6px -1px rgba(0,0,0,0.1);
-            animation: slideUp 0.3s ease-out;
-        }
-        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-        .filter-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.3);
-            z-index: 2000;
-        }
-        .filter-option {
-            padding: 15px;
-            border-bottom: 1px solid #e2e8f0;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 16px;
-        }
-        .filter-option:last-child { border-bottom: none; }
-        .filter-option:active { background: #f8fafc; }
-        .filter-option.selected { color: var(--primary); font-weight: 600; }
-        .filter-option.selected::after { content: "✓"; font-size: 20px; }
-        .controls-row { display: flex; align-items: center; padding: 0 15px; gap: 10px; }
-        .category-scroll { display: flex; overflow-x: auto; gap: 8px; flex: 1; }
+
         .category-scroll::-webkit-scrollbar { display: none; }
+
         .cat-pill {
             padding: 8px 18px;
             background: #fff;
@@ -123,116 +97,157 @@
             font-weight: 500;
             cursor: pointer;
         }
-        .cat-pill.active { background: var(--primary); color: white; border-color: var(--primary); }
-        .view-toggle { background: #f1f5f9; border-radius: 8px; padding: 4px; }
-        .view-btn {
-            width: 36px; height: 36px; border: none;
-            background: white; border-radius: 6px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+        .cat-pill.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
         }
+
+        .view-toggle {
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        .view-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* Product Cards */
         .brand-section { background: white; margin: 15px; border-radius: 16px; padding: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
         .brand-name { font-size: 18px; font-weight: 700; margin-bottom: 15px; color: var(--text); }
+        
         .variant-grid { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 5px; }
         .variant-grid.list-view { flex-direction: column; overflow-x: visible; }
-        .v-card { min-width: 140px; text-align: center; position: relative; }
-        .v-card.unavailable { opacity: 0.6; }
-        .v-card.unavailable img { filter: grayscale(100%); }
+        
+        .v-card { min-width: 140px ; text-align: center; }
         .v-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; background: #f1f5f9; }
         .v-label { font-size: 14px; font-weight: 600; margin-top: 8px; height: 34px; overflow: hidden; }
         .v-price { color: var(--accent); font-weight: 700; font-size: 15px; margin: 5px 0; }
-        .v-cat-tag {
-            display: inline-block;
-            background: #eff6ff; color: var(--primary);
-            border: 1px solid #bfdbfe; border-radius: 50px;
-            font-size: 10px; font-weight: 700;
-            padding: 2px 8px; margin-bottom: 4px;
-            letter-spacing: 0.3px; text-transform: uppercase;
-        }
-        .unavailable-badge {
-            position: absolute; bottom: 110px; right: 8px;
-            background: #ef4444; color: white;
-            padding: 4px 8px; border-radius: 6px;
-            font-size: 11px; font-weight: 700; z-index: 10;
-        }
-        .pickup-badge {
-            position: absolute; top: 10px; left: 10px;
-            background: #f59e0b; color: white;
-            padding: 4px 8px; border-radius: 6px;
-            font-size: 11px; font-weight: 700; z-index: 10;
-        }
+
+        /* List View Styles */
         .variant-grid.list-view .v-card {
-            display: flex; align-items: center; text-align: left;
-            width: 100%; min-width: 0; gap: 10px; padding: 10px;
-            border-radius: 12px; background: #f8fafc; position: relative;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            min-width: 100%;
+            gap: 15px;
+            padding: 10px;
+            border-radius: 12px;
+            background: #f8fafc;
         }
-        .variant-grid.list-view .v-card img { width: 70px; height: 70px; min-width: 70px; flex-shrink: 0; }
-        .variant-grid.list-view .v-info-section { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-        .variant-grid.list-view .v-cat-tag { margin-bottom: 2px; }
-        .variant-grid.list-view .v-label { height: auto; font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-        .variant-grid.list-view .v-price { margin: 0; font-size: 15px; font-weight: 700; }
-        .variant-grid.list-view .v-right-section { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
-        .variant-grid.list-view .qty-btns { min-width: 90px; flex-shrink: 0; }
-        .variant-grid.list-view .badges-container { display: flex; flex-direction: column; gap: 3px; align-items: flex-end; flex-shrink: 0; }
-        .variant-grid.list-view .unavailable-badge { position: static; margin: 0; white-space: nowrap; font-size: 10px; padding: 3px 6px; }
-        .variant-grid.list-view .pickup-badge { position: static; margin: 0; white-space: nowrap; font-size: 10px; padding: 3px 6px; }
-        .qty-btns { display: flex; align-items: center; justify-content: center; gap: 12px; background: #f1f5f9; border-radius: 8px; padding: 4px; }
-        .qty-btns button { width: 28px; height: 28px; border: none; background: white; border-radius: 6px; font-weight: bold; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-        .qty-btns button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        .variant-grid.list-view .v-card img {
+            width: 80px;
+            height: 80px;
+            min-width: 80px;
+        }
+
+        .variant-grid.list-view .v-label {
+            flex: 1;
+            height: auto;
+            font-size: 15px;
+        }
+
+        .variant-grid.list-view .v-price {
+            margin: 0;
+        }
+
+        .variant-grid.list-view .qty-btns {
+            min-width: 110px;
+        }
+
+        .qty-btns {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        .qty-btns button {
+            width: 28px; height: 28px; border: none; background: white; 
+            border-radius: 6px; font-weight: bold; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* Floating Cart */
         .cart-fab {
-            position: fixed; bottom: 25px; left: 20px; right: 20px;
-            background: var(--primary); color: white; padding: 16px;
-            border-radius: 16px; display: flex; justify-content: space-between;
-            align-items: center; font-weight: 700;
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4); z-index: 1001;
+            position: fixed;
+            bottom: 25px;
+            left: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 16px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4);
+            z-index: 1001;
         }
-        .mov-warning { background: #fef3c7; color: #92400e; padding: 10px 15px; border-radius: 8px; font-size: 13px; margin: 10px 0; text-align: center; font-weight: 600; }
+
+        /* Modals */
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 2000; padding: 20px; }
         .modal-content { background: white; border-radius: 20px; padding: 20px; max-height: 80vh; overflow-y: auto; }
-        .address-box { border: 2px solid #e2e8f0; padding: 12px; border-radius: 12px; margin-bottom: 10px; cursor: pointer; }
-        .address-box.selected { border-color: var(--primary); background: #eff6ff; }
-        .btn-action { width: 100%; padding: 14px; border: none; border-radius: 12px; font-weight: 700; font-size: 16px; margin-top: 10px; cursor: pointer; }
-        .input-group { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 10px; margin-bottom: 10px; box-sizing: border-box; }
-        .order-history-item { border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px; margin-bottom: 12px; background: #f8fafc; }
-        .order-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0; }
-        .order-date { font-size: 12px; color: #64748b; font-weight: 600; }
-        .order-total { font-size: 16px; font-weight: 700; color: var(--accent); }
-        .order-items { font-size: 13px; color: #475569; line-height: 1.6; }
-        .no-orders { text-align: center; padding: 40px 20px; color: #94a3b8; }
-        .cart-item { border-bottom: 1px solid #e2e8f0; padding: 12px 0; }
-        .cart-item:last-child { border-bottom: none; }
-        .cart-item-name { font-weight: 600; margin-bottom: 4px; }
-        .cart-item-details { display: flex; justify-content: space-between; align-items: center; color: #64748b; font-size: 14px; }
-
-        /* Two WhatsApp buttons */
-        .wa-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
-        .wa-btn {
-            width: 100%; padding: 14px; border: none; border-radius: 12px;
-            font-weight: 700; font-size: 15px; cursor: pointer;
-            background: #25D366; color: white;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
+        
+        .address-box {
+            border: 2px solid #e2e8f0;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
         }
-        .wa-btn:active { opacity: 0.85; }
+        .address-box.selected { border-color: var(--primary); background: #eff6ff; }
+        
+        .btn-action {
+            width: 100%; padding: 14px; border: none; border-radius: 12px; 
+            font-weight: 700; font-size: 16px; margin-top: 10px; cursor: pointer;
+        }
+        .input-group { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 10px; margin-bottom: 10px; box-sizing: border-box; }
     </style>
 </head>
 <body>
+
     <div class="header">
         <div class="logo">HARI TRADERS</div>
         <div class="profile-trigger" onclick="openProfile()" id="userBtn">Login</div>
     </div>
+
     <div class="sticky-controls">
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search products..." oninput="renderProducts()">
-            <button class="filter-btn" id="filterBtn" onclick="openFilterModal()" title="Filter">▼</button>
+            <input type="text" id="searchInput" placeholder="Search snacks..." oninput="renderProducts()">
         </div>
         <div class="controls-row">
-            <div class="category-scroll" id="catScroll"></div>
+            <div class="category-scroll">
+                <div class="cat-pill active" onclick="setCat('All', this)">All</div>
+                <div class="cat-pill" onclick="setCat('Namkeen', this)">Namkeen</div>
+                <div class="cat-pill" onclick="setCat('Fryums', this)">Fryums</div>
+                <div class="cat-pill" onclick="setCat('Bisciuits', this)">Biscuits</div>
+                <div class="cat-pill" onclick="setCat('Choclates', this)">Choclates</div>
+            </div>
             <div class="view-toggle">
                 <button class="view-btn" id="viewBtn" onclick="toggleView()" title="Toggle View">⊞</button>
             </div>
         </div>
     </div>
+
     <div id="productList"></div>
+
     <div class="cart-fab" id="cartFab" style="display: none;" onclick="openCart()">
         <span id="cartCount">0 Items</span>
         <span id="cartTotal">₹0</span>
@@ -250,220 +265,53 @@
             <h2 style="margin-top:0">Order Summary</h2>
             <div id="cartList"></div>
             <div id="cartGrandTotal" style="font-size:20px; font-weight:800; margin:20px 0;"></div>
-            <div class="wa-buttons">
-                <a id="waBtn1" href="#" class="wa-btn" onclick="sendOrder(1)">📱 Confirm Order (WhatsApp)</a>
-            </div>
-            <button class="btn-action" style="background:#f1f5f9; color:#64748b; margin-top:10px;" onclick="closeModals()">Back to Shop</button>
+            <button class="btn-action" style="background:var(--accent); color:white" onclick="sendToWhatsapp()">Confirm Order (WhatsApp)</button>
+            <button class="btn-action" style="background:#f1f5f9; color:#64748b" onclick="closeModals()">Back to Shop</button>
         </div>
-    </div>
-
-    <div id="orderHistoryModal" class="modal">
-        <div class="modal-content">
-            <h2 style="margin-top:0">Order History</h2>
-            <div id="orderHistoryList"></div>
-            <button class="btn-action" style="background:#f1f5f9; color:#64748b" onclick="closeModals()">Close</button>
-        </div>
-    </div>
-
-    <div id="filterOverlay" class="filter-overlay" onclick="closeFilterModal()"></div>
-    <div id="filterModal" class="filter-modal">
-        <h3 style="margin-top:0; margin-bottom:15px;">Filter Products</h3>
-        <div class="filter-option selected" data-filter="all" onclick="selectFilter('all')">All Items</div>
-        <div class="filter-option" data-filter="available" onclick="selectFilter('available')">Available Only</div>
-        <div class="filter-option" data-filter="unavailable" onclick="selectFilter('unavailable')">Out of Stock Only</div>
     </div>
 
     <script>
-        const WHATSAPP  = "917415768041";
-        const WHATSAPP2 = "919644158936";
-        const MIN_ORDER_VALUE = 500;
+        const WHATSAPP = "917415768041";
         let cart = {};
         let selectedCat = "All";
         let viewMode = "grid";
-        let currentFilter = "all";
-        let lastMsg = "";
-        let userData = JSON.parse(localStorage.getItem('ht_user')) || { name: "", addresses: [], selectedAddrIndex: 0, orderHistory: [] };
-
-        const globalTierPricing = {
-            enabled: false,
-            tiers: [
-                { minTotal: 0, discount: 0 },
-                { minTotal: 1000, discount: 5 },
-                { minTotal: 2000, discount: 10 },
-                { minTotal: 5000, discount: 15 }
-            ]
-        };
+        let userData = JSON.parse(localStorage.getItem('ht_user')) || { name: "", addresses: [], selectedAddrIndex: 0 };
 
         const products = [
-            {
-                id: 1, name: "Yellow Diamond", active: true,
-                tierPricing: {
-                    enabled: true,
-                    brandTiers: [ { minQty: 0, discount: 0 }, { minQty: 20, discount: 2 }, { minQty: 50, discount: 4 } ],
-                    variantTiers: [ { minQty: 0, discount: 0 }, { minQty: 20, discount: 2 }, { minQty: 50, discount: 0 } ]
-                },
-                variants: [
-                    { vid: 1,  label: "Aloo Bhujia",   category: "Namkeen", price: 50, image: "image1.jpg",      available: true,  active: true },
-                    { vid: 2,  label: "Ratlami",        category: "Namkeen", price: 50, image: "image2.jpg",      available: true,  active: true },
-                    { vid: 3,  label: "Tasty",          category: "Namkeen", price: 50, image: "image4.jpg",      available: true,  active: true },
-                    { vid: 4,  label: "Mixture",        category: "Namkeen", price: 50, image: "image3.jpg",      available: true,  active: true },
-                    { vid: 5,  label: "Falhari",        category: "Namkeen", price: 50, image: "image5.jpg",      available: true,  active: true },
-                    { vid: 6,  label: "Gathiya",        category: "Namkeen", price: 50, image: "image6.jpg.png",  available: true,  active: true },
-                    { vid: 7,  label: "Moong Dal",      category: "Namkeen", price: 50, image: "image7.jpg",      available: true,  active: true },
-                    { vid: 8,  label: "Hing Chana",     category: "Namkeen", price: 50, image: "image8.jpg",      available: true,  active: true },
-                    { vid: 9,  label: "Matar",          category: "Namkeen", price: 50, image: "image9.jpg",      available: true,  active: true },
-                    { vid: 10, label: "Classic Peanut", category: "Namkeen", price: 50, image: "image10.jpg",     available: true,  active: true },
-                    { vid: 11, label: "Punjabi",        category: "Namkeen", price: 50, image: "image12.jpg",     available: true,  active: true },
-                    { vid: 12, label: "Khatta Meetha",  category: "Namkeen", price: 50, image: "image11.jpg",     available: true,  active: true },
-                ]
-            },
-            {
-                id: 2, name: "Shree Hari", active: true,
-                tierPricing: { enabled: false, brandTiers: [ { minQty: 0, price: 50 }, { minQty: 10, price: 48 }, { minQty: 20, price: 45 } ] },
-                variants: [
-                    { vid: 1,  label: "lal Katori",   category: "Fryums", price: 50, image: "lal katori.png",   available: true, active: true },
-                    { vid: 2,  label: "pili katori",  category: "Fryums", price: 50, image: "MASALA-VATKA.png", available: true, active: true },
-                    { vid: 3,  label: "neeli katori", category: "Fryums", price: 50, image: "neelikatori.png",  available: true, active: true },
-                    { vid: 4,  label: "jeera papad",  category: "Fryums", price: 50, image: "jeeraPAPAD.png",   available: true, active: true },
-                    { vid: 5,  label: "Masala papad", category: "Fryums", price: 50, image: "masala-papad.png", available: true, active: true },
-                    { vid: 6,  label: "refil pipe",   category: "Fryums", price: 50, image: "refil.png",        available: true, active: true },
-                    { vid: 7,  label: "masala ponga", category: "Fryums", price: 50, image: "masala-ponga.png", available: true, active: true },
-                    { vid: 8,  label: "pasta blue",   category: "Fryums", price: 50, image: "pasta.png",        available: true, active: true },
-                    { vid: 9,  label: "penne pasta",  category: "Fryums", price: 50, image: "pennepasta.png",   available: true, active: true },
-                    { vid: 10, label: "Abcd",         category: "Fryums", price: 50, image: "Abcd.png",         available: true, active: true },
-                    { vid: 11, label: "noodles",      category: "Fryums", price: 50, image: "NOODLES.png",      available: true, active: true },
-                    { vid: 12, label: "jali",         category: "Fryums", price: 50, image: "CHORAS-JALI.png",  available: true, active: true },
-                    { vid: 13, label: "wheels",       category: "Fryums", price: 50, image: "MEGA-WHEELS.png",  available: true, active: true },
-                    { vid: 14, label: "chokdi",       category: "Fryums", price: 50, image: "CHOKDI.png",       available: true, active: true },
-                    { vid: 15, label: "Gear ring",    category: "Fryums", price: 50, image: "gearring.png",     available: true, active: true },
-                    { vid: 16, label: "Aeroplane",    category: "Fryums", price: 50, image: "AERO-PLANE.png",   available: true, active: true },
-                ]
-            },
-            {
-                id: 3, name: "lacy / chacha choudhary", active: true,
-                tierPricing: { enabled: false, brandTiers: [ { minQty: 0, price: 60 }, { minQty: 10, price: 58 }, { minQty: 20, price: 57 } ] },
-                variants: [
-                    { vid: 1,  label: "lacy Katori",              category: "Fryums", price: 60, image: "lacy katori.png",           available: true, active: true },
-                    { vid: 2,  label: "chacha Choudhary noodles", category: "Fryums", price: 60, image: "chachachoudharynoodles.png", available: true, active: true },
-                    { vid: 3,  label: "lacy pasta",               category: "Fryums", price: 60, image: "lacy pasta.png",            available: true, active: true },
-                    { vid: 4,  label: "lacy stick",               category: "Fryums", price: 60, image: "lacy stick.png",            available: true, active: true },
-                    { vid: 5,  label: "Manchurian",               category: "Fryums", price: 60, image: "Manchurian.png",            available: true, active: true },
-                    { vid: 6,  label: "refil pipe",               category: "Fryums", price: 60, image: "refil pipe.png",            available: true, active: true },
-                    { vid: 7,  label: "chips Cream'n Onion",      category: "Chips",  price: 60, image: "chachagchips.png",          available: true, active: true },
-                    { vid: 8,  label: "chips Tomato",             category: "Chips",  price: 60, image: "chachalchips.png",          available: true, active: true },
-                    { vid: 9,  label: "Dal chawal",               category: "Fryums", price: 60, image: "Dalchawal.png",            available: true, active: true },
-                    { vid: 10, label: "popcorn",                  category: "Fryums", price: 60, image: "lacypopcorn.png",          available: true, active: true },
-                ]
-            },
-            {
-                id: 4, name: "Balaji 12 pcs", active: true,
-                tierPricing: { enabled: true, brandTiers: [ { minQty: 0, price: 55 }, { minQty: 2, price: 52.5 }, { minQty: 5, price: 52 } ] },
-                variants: [
-                    { vid: 1, label: "stick noodles",   category: "Fryums",  price: 55, image: "balaji stick.png",           available: true, active: true },
-                    { vid: 2, label: "sev murmura",     category: "Namkeen", price: 55, image: "Balaji Sev murmura.png",     available: true, active: true },
-                    { vid: 3, label: "chana jor garam", category: "Namkeen", price: 55, image: "Balaji chana jor garam.png", available: true, active: true },
-                    { vid: 4, label: "papdi gathiya",   category: "Namkeen", price: 55, image: "Balaji papdi gathiya.png",   available: true, active: true },
-                    { vid: 5, label: "Amaize",          category: "Chips",   price: 55, image: "Amaize.png",                available: true, active: true },
-                    { vid: 6, label: "chataka pataka",  category: "Fryums",  price: 55, image: "Balaji chataka pataka.png", available: true, active: true },
-                    { vid: 7, label: "tornado",         category: "puffs",   price: 55, image: "tornado.png",               available: true, active: true },
-                ]
-            },
-            {
-                id: 5, name: "Balaji 16 pcs", active: true,
-                tierPricing: { enabled: false, brandTiers: [ { minQty: 0, price: 70 }, { minQty: 10, price: 69.5 }, { minQty: 15, price: 69 } ] },
-                variants: [
-                    { vid: 1, label: "punjabi tadka", category: "Namkeen", price: 70, image: "Balaji punjabi.png",  available: true, active: true },
-                    { vid: 2, label: "Classic sev",   category: "Namkeen", price: 70, image: "classic sev.png",    available: true, active: true },
-                    { vid: 3, label: "Gathiya",       category: "Namkeen", price: 70, image: "Balaji gathiya.png", available: true, active: true },
-                    { vid: 4, label: "Teekha meetha", category: "Namkeen", price: 70, image: "teekha meetha.png",  available: true, active: true },
-                ]
-            },
-            {
-                id: 6, name: "Gold flake", active: true,
-                variants: [
-                    { vid: 1, label: "gold flake mint", category: "Cigarette", price: 105, image: "gf mint.jpg",      available: true,  pickupOnly: true, active: true },
-                    { vid: 2, label: "gold flake",      category: "Cigarette", price: 105, image: "gf.jpg",           available: false, pickupOnly: true, active: true },
-                    { vid: 3, label: "indie mint",      category: "Cigarette", price: 105, image: "gf indiemint.jpg", available: false, pickupOnly: true, active: true },
-                ]
-            },
-            {
-                id: 7, name: "parle", active: true,
-                variants: [
-                    { vid: 1, label: "parle-5",      category: "Biscuits", price: 110, image: "parle-5.png",        available: true, pickupOnly: false, active: true },
-                    { vid: 2, label: "20-20",        category: "Biscuits", price: 55,  image: "20-20.png",          available: true, pickupOnly: false, active: true },
-                    { vid: 3, label: "orange",       category: "Biscuits", price: 55,  image: "magix-orange-5.png", available: true, pickupOnly: false, active: true },
-                    { vid: 4, label: "krackjack-5",  category: "Biscuits", price: 110, image: "krack-jack-5.png",   available: true, pickupOnly: false, active: true },
-                    { vid: 5, label: "krackjack-10", category: "Biscuits", price: 110, image: "krack-jack-10.png",  available: true, pickupOnly: false, active: true },
-                    { vid: 6, label: "happy-5",      category: "Biscuits", price: 110, image: "happy-happy.png",    available: true, pickupOnly: false, active: true },
-                    { vid: 7, label: "parle-10",     category: "Biscuits", price: 110, image: "parle-10.png",       available: true, pickupOnly: false, active: true },
-                    { vid: 8, label: "parle gold",   category: "Biscuits", price: 220, image: "parle gold.png",     available: true, pickupOnly: false, active: true },
-                    { vid: 9, label: "Monaco",       category: "Biscuits", price: 110, image: "monaco.png",         available: true, pickupOnly: false, active: true },
-                ]
-            },
-            {
-                id: 8, name: "Britannia", active: true,
-                variants: [
-                    { vid: 1, label: "Good day-5",  category: "Biscuits", price: 55,  image: "goodday5.png",  available: true, pickupOnly: false, active: true },
-                    { vid: 2, label: "Good day-10", category: "Biscuits", price: 110, image: "goodday10.png", available: true, pickupOnly: false, active: true },
-                    { vid: 3, label: "Tiger",       category: "Biscuits", price: 110, image: "Tiger.png",     available: true, pickupOnly: false, active: true },
-                ]
-            },
-            {
-                id: 9, name: "Cadbury", active: true,
-                variants: [
-                    { vid: 1, label: "oreo-10", category: "Biscuits", price: 110, image: "oreo.png", available: true, pickupOnly: false, active: true },
-                ]
-            },
-            {
-                id: 10, name: "mamy poko pants", active: true,
-                variants: [
-                    { vid: 1, label: "S-1", category: "Diaper", price: 80, image: "s-1.png", available: true, pickupOnly: false, active: true },
-                    { vid: 2, label: "M-1", category: "Diaper", price: 90, image: "M-1.png", available: true, pickupOnly: false, active: true },
-                ]
-            },
-            {
-                id: 11, name: "9 Diaper", active: true,
-                variants: [
-                    { vid: 1, label: "S-1", category: "Diaper", price: 70, image: "9diaper.png", available: true,  pickupOnly: false, active: true },
-                    { vid: 2, label: "M-1", category: "Diaper", price: 90, image: "M-1.png",     available: true,  pickupOnly: false, active: false },
-                ]
-            },
-            {
-                id: 12, name: "Hindustan Unilever", active: true,
-                variants: [
-                    { vid: 1, label: "Sunsilk", category: "Shampoo", price: 13, image: "Sunsilkr1.png", available: true, pickupOnly: false, active: true },
-                ]
-            },
-            {
-                id: 13, name: "Rajshree", active: true,
-                tierPricing: { enabled: false, variantTiers: [ { minQty: 0, discount: 0 }, { minQty: 5, discount: 1 }, { minQty: 10, discount: 2 } ] },
-                variants: [
-                    { vid: 1, label: "Rajshree 10", category: "Pan Masala", price: 215, image: "Rs10.png", available: true, pickupOnly: true, active: true },
-                    { vid: 2, label: "Rajshree 20", category: "Pan Masala", price: 265, image: "Rs20.png", available: true, pickupOnly: true, active: true },
-                    { vid: 3, label: "Rajshree 40", category: "Pan Masala", price: 360, image: "Rs30.png", available: true, pickupOnly: true, active: true },
-                ]
-            },
-            {
-                id: 14, name: "vimal", active: true,
-                variants: [
-                    { vid: 1, label: "vimal 10", category: "Pan Masala", price: 185, image: "vimal 10.jpg", available: true,  pickupOnly: true, active: true },
-                    { vid: 2, label: "vimal 20", category: "Pan Masala", price: 190, image: "vimal20.jpg",  available: false, pickupOnly: true, active: true },
-                    { vid: 3, label: "vimal 40", category: "Pan Masala", price: 440, image: "vimal 40.jpg", available: false, pickupOnly: true, active: true },
-                ]
-            }
+            { id: 1, name: "Yellow Diamond", category: "Namkeen", variants: [
+              
+                { vid: 1, label: "Aloo Bhujia", price: 50, image: "image1.jpg" },
+                { vid: 2, label: "Ratlami", price: 50, image: "image2.jpg" },
+                { vid: 3, label: "Tasty", price: 50, image: "image4.jpg" },
+                { vid: 4, label: "Mixture", price: 50, image: "image3.jpg" },
+                { vid: 5, label: "Falhari", price: 50, image: "image5.jpg" },
+                { vid: 6, label: "Gathiya", price: 50, image: "gathiya.png" },
+                { vid: 7, label: "Moong Dal", price: 50, image: "image7.jpg" },
+                { vid: 8, label: "Hing Chana", price: 50, image: "image8.jpg" },
+                { vid: 9, label: "Matar", price: 50, image: "image9.jpg" },
+                { vid: 10, label: "Classic Peanut", price: 50, image: "image10.jpg" },
+                { vid: 11, label: "Punjabi", price: 50, image: "image12.jpg" },
+                { vid: 12, label: "Khatta meetha", price: 50, image: "image11.jpg" },
+            ]},
+            { id: 2, name: "Shree Hari", category: "Fryums", variants: [
+                { vid: 1, label: "lal Katori", price: 50, image: " lal katori.png" },
+                { vid: 2, label: "pili katori", price: 50, image: "MASALA-VATKA.png" },
+                { vid: 3, label: "neeli katori", price: 50, image: "neelikatori.png" },
+                { vid: 4, label: "jeera papad", price: 50, image: "jeeraPAPAD.png" },
+                { vid: 5, label: "Masala papad", price: 50, image: "masala-papad.png" },
+                { vid: 6, label: "refil pipe", price: 50, image: " refil.png" },
+                { vid: 7, label: "masala ponga", price: 50, image: "masala-ponga.png" },
+                { vid: 8, label: "pasta blue", price: 50, image: "pasta.png" },
+                { vid: 9, label: "penne pasta", price: 50, image: "pennepasta.png" },
+                { vid: 10, label: "Abcd", price: 50, image: "Abcd.png" },
+                { vid: 11, label: "noodles", price: 50, image: "NOODLES.png" },
+                { vid: 12, label: "jali", price: 50, image: "CHORAS-JALI.png" },
+                { vid: 13, label: "wheels", price: 50, image: "MEGA-WHEELS.png" },
+                { vid: 14, label: "chokdi", price: 50, image: "CHOKDI.png" },
+                { vid: 15, label: "Gear ring", price: 50, image: "Gearring.jpg" },
+                { vid: 16, label: "Aeroplane", price: 50, image: "AERO-PLANE.png" },
+                ]}
         ];
-
-        function buildCategories() {
-            const cats = new Set();
-            products.forEach(p => {
-                if (p.active === false) return;
-                p.variants.forEach(v => { if (v.active !== false && v.category) cats.add(v.category); });
-            });
-            const scroll = document.getElementById('catScroll');
-            let html = `<div class="cat-pill active" onclick="setCat('All', this)">All</div>`;
-            cats.forEach(cat => { html += `<div class="cat-pill" onclick="setCat('${cat}', this)">${cat}</div>`; });
-            scroll.innerHTML = html;
-        }
 
         function setCat(cat, el) {
             selectedCat = cat;
@@ -478,83 +326,41 @@
             renderProducts();
         }
 
-        function calculateTierPrice(product, variant, quantity) {
-            const basePrice = variant.price;
-            if (!product.tierPricing || !product.tierPricing.enabled) return basePrice;
-            const tierConfig = product.tierPricing;
-            let finalPrice = basePrice;
-            if (tierConfig.brandTiers) {
-                let brandTotalQty = 0;
-                for (let k in cart) { const [pid] = k.split("_").map(Number); if (pid === product.id) brandTotalQty += cart[k]; }
-                let applicableBrandTier = tierConfig.brandTiers[0];
-                for (let tier of tierConfig.brandTiers) { if (brandTotalQty >= tier.minQty) applicableBrandTier = tier; }
-                if (applicableBrandTier.price !== undefined) finalPrice = applicableBrandTier.price;
-                else if (applicableBrandTier.discount !== undefined) finalPrice = Math.round(finalPrice * (1 - applicableBrandTier.discount / 100));
-            }
-            if (tierConfig.variantTiers) {
-                let applicableVariantTier = tierConfig.variantTiers[0];
-                for (let tier of tierConfig.variantTiers) { if (quantity >= tier.minQty) applicableVariantTier = tier; }
-                if (applicableVariantTier.price !== undefined) finalPrice = applicableVariantTier.price;
-                else if (applicableVariantTier.discount !== undefined) finalPrice = Math.round(finalPrice * (1 - applicableVariantTier.discount / 100));
-            }
-            return finalPrice;
-        }
-
-        function getTierPricingInfo(product, variant, quantity) {
-            if (!product.tierPricing || !product.tierPricing.enabled) return { price: variant.price, hasTier: false };
-            const tierPrice = calculateTierPrice(product, variant, quantity);
-            const hasTier = tierPrice !== variant.price;
-            return { price: tierPrice, hasTier, originalPrice: variant.price };
-        }
-
         function renderProducts() {
             const query = document.getElementById("searchInput").value.toLowerCase();
-            const filter = currentFilter;
             let html = "";
+            
             products.forEach(p => {
-                if (p.active === false) return;
+                // Filter by category
+                if (selectedCat !== "All" && p.category !== selectedCat) return;
+                
+                // Filter variants that match the search query
                 let matchingVariants = p.variants.filter(v => {
-                    if (v.active === false) return false;
-                    if (selectedCat !== "All" && v.category !== selectedCat) return false;
-                    const matchesSearch = !query || v.label.toLowerCase().includes(query) || p.name.toLowerCase().includes(query);
-                    if (!matchesSearch) return false;
-                    if (filter === 'available' && v.available === false) return false;
-                    if (filter === 'unavailable' && v.available !== false) return false;
-                    return true;
+                    if (!query) return true;
+                    return v.label.toLowerCase().includes(query) || p.name.toLowerCase().includes(query);
                 });
-                matchingVariants.sort((a, b) => {
-                    const aA = a.available !== false, bA = b.available !== false;
-                    if (aA && !bA) return -1; if (!aA && bA) return 1; return 0;
-                });
-                if (matchingVariants.length === 0) return;
-                const gridClass = viewMode === 'list' ? 'variant-grid list-view' : 'variant-grid';
-                html += `<div class="brand-section"><div class="brand-name">${p.name}</div><div class="${gridClass}">`;
-                matchingVariants.forEach(v => {
-                    const key = p.id + "_" + v.vid;
-                    const isAvailable = v.available !== false;
-                    const isPickupOnly = v.pickupOnly === true;
-                    const cardClass = isAvailable ? 'v-card' : 'v-card unavailable';
-                    const disabledAttr = isAvailable ? '' : 'disabled';
-                    const showTag = selectedCat === "All" && v.category;
-                    const catTagHTML = showTag ? `<div class="v-cat-tag">${v.category}</div>` : '';
-                    if (viewMode === 'list') {
-                        html += `<div class="${cardClass}"><img src="${v.image}"><div class="v-info-section">${catTagHTML}<div class="v-label">${v.label}</div><div class="v-price">₹${v.price}</div></div><div class="v-right-section">`;
-                        if (!isAvailable || isPickupOnly) {
-                            html += '<div class="badges-container">';
-                            if (!isAvailable) html += '<div class="unavailable-badge">Out of Stock</div>';
-                            if (isPickupOnly) html += '<div class="pickup-badge">Pickup Only</div>';
-                            html += '</div>';
-                        }
-                        html += `<div class="qty-btns"><button onclick="updateQty(${p.id}, ${v.vid}, -1)" ${disabledAttr}>-</button><span id="q_${key}">${cart[key] || 0}</span><button onclick="updateQty(${p.id}, ${v.vid}, 1)" ${disabledAttr}>+</button></div></div></div>`;
-                    } else {
-                        let badgesHTML = '';
-                        if (!isAvailable) badgesHTML += '<div class="unavailable-badge">Out of Stock</div>';
-                        if (isPickupOnly) badgesHTML += '<div class="pickup-badge">Pickup Only</div>';
-                        html += `<div class="${cardClass}">${badgesHTML}<img src="${v.image}">${catTagHTML}<div class="v-label">${v.label}</div><div class="v-price">₹${v.price}</div><div class="qty-btns"><button onclick="updateQty(${p.id}, ${v.vid}, -1)" ${disabledAttr}>-</button><span id="q_${key}">${cart[key] || 0}</span><button onclick="updateQty(${p.id}, ${v.vid}, 1)" ${disabledAttr}>+</button></div></div>`;
-                    }
-                });
-                html += `</div></div>`;
+                
+                // Only show brand section if there are matching variants
+                if (matchingVariants.length > 0) {
+                    const gridClass = viewMode === 'list' ? 'variant-grid list-view' : 'variant-grid';
+                    html += `<div class="brand-section"><div class="brand-name">${p.name}</div><div class="${gridClass}">`;
+                    matchingVariants.forEach(v => {
+                        const key = p.id + "_" + v.vid;
+                        html += `<div class="v-card">
+                            <img src="${v.image}">
+                            <div class="v-label">${v.label}</div>
+                            <div class="v-price">₹${v.price}</div>
+                            <div class="qty-btns">
+                                <button onclick="updateQty(${p.id}, ${v.vid}, -1)">-</button>
+                                <span id="q_${key}">${cart[key] || 0}</span>
+                                <button onclick="updateQty(${p.id}, ${v.vid}, 1)">+</button>
+                            </div>
+                        </div>`;
+                    });
+                    html += `</div></div>`;
+                }
             });
+            
             document.getElementById("productList").innerHTML = html || "<p style='text-align:center; padding:50px;'>No items found</p>";
         }
 
@@ -572,195 +378,110 @@
                 const [pid, vid] = k.split("_").map(Number);
                 const p = products.find(x => x.id === pid);
                 const v = p.variants.find(x => x.vid === vid);
-                const qty = cart[k];
-                const priceInfo = getTierPricingInfo(p, v, qty);
-                total += qty * priceInfo.price; count += qty;
-            }
-            if (globalTierPricing.enabled) {
-                let applicableTier = globalTierPricing.tiers[0];
-                for (let tier of globalTierPricing.tiers) { if (total >= tier.minTotal) applicableTier = tier; }
-                if (applicableTier.discount > 0) total -= Math.round(total * applicableTier.discount / 100);
+                total += (cart[k] * v.price);
+                count += cart[k];
             }
             const fab = document.getElementById("cartFab");
-            if (total > 0) {
+            if (count > 0) {
                 fab.style.display = "flex";
                 document.getElementById("cartCount").innerText = count + " Items";
                 document.getElementById("cartTotal").innerText = "₹" + total;
             } else { fab.style.display = "none"; }
         }
 
-        function buildMessage() {
-            let msg = `*New Order from ${userData.name}*\n\n*Address:*\n${userData.addresses[userData.selectedAddrIndex]}\n\n*Items:*\n`;
-            const brandGroups = {};
-            let total = 0, totalSavings = 0;
-            for (let k in cart) {
-                const [pid, vid] = k.split("_").map(Number);
-                const p = products.find(x => x.id === pid);
-                const v = p.variants.find(x => x.vid === vid);
-                const qty = cart[k];
-                const priceInfo = getTierPricingInfo(p, v, qty);
-                const itemTotal = qty * priceInfo.price;
-                if (priceInfo.hasTier) totalSavings += qty * (v.price - priceInfo.price);
-                total += itemTotal;
-                if (!brandGroups[pid]) brandGroups[pid] = { brandName: p.name, items: [] };
-                brandGroups[pid].items.push({ label: v.label, price: priceInfo.price, originalPrice: v.price, hasTier: priceInfo.hasTier, qty, itemTotal, pickupOnly: v.pickupOnly });
-            }
-            for (let pid in brandGroups) {
-                const group = brandGroups[pid];
-                const prices = [...new Set(group.items.map(i => i.price))];
-                if (prices.length > 1) {
-                    group.items.forEach(item => { msg += `${group.brandName} - ${item.label} × ${item.qty} = ₹${item.itemTotal}${item.pickupOnly ? ' (Pickup Only)' : ''}\n`; });
-                } else {
-                    const totalQty = group.items.reduce((s, i) => s + i.qty, 0);
-                    const totalAmount = group.items.reduce((s, i) => s + i.itemTotal, 0);
-                    const variantList = group.items.map(i => `${i.label} (${i.qty})`).join(', ');
-                    msg += `${group.brandName}: ${variantList} = ₹${totalAmount}${group.items[0].pickupOnly ? ' (Pickup Only)' : ''}\n`;
-                }
-            }
-            if (totalSavings > 0) msg += `\n💰 Tier Discount Savings: -₹${totalSavings}`;
-            let finalTotal = total;
-            if (globalTierPricing.enabled) {
-                let applicableTier = globalTierPricing.tiers[0];
-                for (let tier of globalTierPricing.tiers) { if (total >= tier.minTotal) applicableTier = tier; }
-                if (applicableTier.discount > 0) {
-                    const gd = Math.round(total * applicableTier.discount / 100);
-                    finalTotal = total - gd;
-                    msg += `\nSubtotal: ₹${total}\n🎊 Order Discount (${applicableTier.discount}%): -₹${gd}`;
-                }
-            }
-            msg += `\n\n*Total: ₹${finalTotal}*`;
-            return { msg, finalTotal };
-        }
-
-        function openCart() {
-            if (Object.keys(cart).length === 0) return;
-            let html = "", total = 0, deliverableTotal = 0, pickupTotal = 0, totalSavings = 0;
-            const brandGroups = {};
-            for (let k in cart) {
-                const [pid, vid] = k.split("_").map(Number);
-                const p = products.find(x => x.id === pid);
-                const v = p.variants.find(x => x.vid === vid);
-                const qty = cart[k];
-                const priceInfo = getTierPricingInfo(p, v, qty);
-                const itemTotal = qty * priceInfo.price;
-                if (priceInfo.hasTier) totalSavings += qty * (priceInfo.originalPrice - priceInfo.price);
-                total += itemTotal;
-                if (v.pickupOnly) pickupTotal += itemTotal; else deliverableTotal += itemTotal;
-                if (!brandGroups[pid]) brandGroups[pid] = { brandName: p.name, items: [] };
-                brandGroups[pid].items.push({ label: v.label, price: priceInfo.price, originalPrice: v.price, hasTier: priceInfo.hasTier, qty, itemTotal, pickupOnly: v.pickupOnly });
-            }
-            for (let pid in brandGroups) {
-                const group = brandGroups[pid];
-                const prices = [...new Set(group.items.map(i => i.price))];
-                if (prices.length > 1) {
-                    group.items.forEach(item => {
-                        html += `<div class="cart-item"><div class="cart-item-name">${group.brandName} - ${item.label}</div><div class="cart-item-details"><span>${item.qty} × ₹${item.price}${item.hasTier ? ` <s style="color:#94a3b8;">₹${item.originalPrice}</s>` : ''}</span><span style="font-weight:600; color:var(--accent)">₹${item.itemTotal}</span></div>${item.pickupOnly ? '<div style="font-size:12px; color:#f59e0b; margin-top:4px;">⚠ Pickup Only</div>' : ''}</div>`;
-                    });
-                } else {
-                    const totalQty = group.items.reduce((s, i) => s + i.qty, 0);
-                    const totalAmount = group.items.reduce((s, i) => s + i.itemTotal, 0);
-                    const variantList = group.items.map(i => `${i.label} (${i.qty})`).join(', ');
-                    html += `<div class="cart-item"><div class="cart-item-name">${group.brandName}</div><div style="font-size:12px; color:#64748b; margin-top:2px; margin-bottom:4px;">${variantList}</div><div class="cart-item-details"><span>${totalQty} × ₹${prices[0]}${group.items[0].hasTier ? ` <s style="color:#94a3b8;">₹${group.items[0].originalPrice}</s>` : ''}</span><span style="font-weight:600; color:var(--accent)">₹${totalAmount}</span></div>${group.items[0].pickupOnly ? '<div style="font-size:12px; color:#f59e0b; margin-top:4px;">⚠ Pickup Only</div>' : ''}</div>`;
-                }
-            }
-            document.getElementById("cartList").innerHTML = html;
-            let summaryHTML = `<div style="border-top:2px solid #e2e8f0; padding-top:15px;">`;
-            if (pickupTotal > 0) summaryHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span>Pickup Items:</span><span>₹${pickupTotal}</span></div>`;
-            if (deliverableTotal > 0) {
-                summaryHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span>Delivery Items:</span><span>₹${deliverableTotal}</span></div>`;
-                if (deliverableTotal < MIN_ORDER_VALUE) summaryHTML += `<div class="mov-warning">Minimum order value for delivery: ₹${MIN_ORDER_VALUE}</div>`;
-            }
-            if (totalSavings > 0) summaryHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:8px; color:#10b981;"><span>🎉 Tier Discount Savings:</span><span>-₹${totalSavings}</span></div>`;
-            let finalTotal = total, globalDiscount = 0;
-            if (globalTierPricing.enabled) {
-                let applicableTier = globalTierPricing.tiers[0];
-                for (let tier of globalTierPricing.tiers) { if (total >= tier.minTotal) applicableTier = tier; }
-                if (applicableTier.discount > 0) {
-                    globalDiscount = Math.round(total * applicableTier.discount / 100);
-                    finalTotal = total - globalDiscount;
-                    summaryHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span>Subtotal:</span><span>₹${total}</span></div>`;
-                    summaryHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:8px; color:#10b981;"><span>🎊 Order Discount (${applicableTier.discount}%):</span><span>-₹${globalDiscount}</span></div>`;
-                }
-            }
-            summaryHTML += `<div style="display:flex; justify-content:space-between; font-size:20px; font-weight:800; margin-top:10px;"><span>Total:</span><span style="color:var(--accent)">₹${finalTotal}</span></div></div>`;
-            document.getElementById("cartGrandTotal").innerHTML = summaryHTML;
-            document.getElementById("cartModal").style.display = "block";
-        }
-
-        function sendOrder(num) {
-            if (!userData.name || userData.addresses.length === 0) {
-                alert("Please set up your profile first");
-                closeModals(); openProfile(); return;
-            }
-            let deliverableTotal = 0;
-            for (let k in cart) {
-                const [pid, vid] = k.split("_").map(Number);
-                const p = products.find(x => x.id === pid);
-                const v = p.variants.find(x => x.vid === vid);
-                const qty = cart[k];
-                const priceInfo = getTierPricingInfo(p, v, qty);
-                if (!v.pickupOnly) deliverableTotal += qty * priceInfo.price;
-            }
-            if (deliverableTotal > 0 && deliverableTotal < MIN_ORDER_VALUE) {
-                alert(`Minimum order value for delivery is ₹${MIN_ORDER_VALUE}. Your deliverable items total is ₹${deliverableTotal}.`); return;
-            }
-            const { msg, finalTotal } = buildMessage();
-            const number = num === 1 ? WHATSAPP : WHATSAPP2;
-            const order = { date: new Date().toLocaleDateString(), items: msg, total: finalTotal };
-            userData.orderHistory.unshift(order);
-            localStorage.setItem('ht_user', JSON.stringify(userData));
-            cart = {};
-            updateCartFab();
-            closeModals();
-            window.open(`https://wa.me/${number}?text=` + encodeURIComponent(msg));
-        }
-
         function openProfile() {
-            let html = "";
+            const body = document.getElementById("profileBody");
             if (!userData.name) {
-                html = `<h2 style="margin-top:0">Welcome!</h2><input type="text" id="userName" class="input-group" placeholder="Your Name"><button class="btn-action" style="background:var(--primary); color:white" onclick="saveName()">Continue</button>`;
+                body.innerHTML = `<h3>Welcome</h3>
+                <input id="inName" class="input-group" placeholder="Full Name">
+                <button class="btn-action" style="background:var(--primary); color:white" onclick="saveUser()">Start Shopping</button>`;
             } else {
-                html = `<h2 style="margin-top:0">Profile</h2><div style="margin-bottom:20px"><div style="font-weight:600; margin-bottom:10px">Name</div><div style="font-size:18px; color:var(--text)">${userData.name}</div></div><div style="font-weight:600; margin-bottom:10px">Delivery Addresses</div>`;
-                userData.addresses.forEach((addr, i) => { html += `<div class="address-box ${i === userData.selectedAddrIndex ? 'selected' : ''}" onclick="selectAddress(${i})">${addr}</div>`; });
-                html += `<input type="text" id="newAddress" class="input-group" placeholder="Add new address"><button class="btn-action" style="background:var(--primary); color:white" onclick="addAddress()">Add Address</button><button class="btn-action" style="background:var(--accent); color:white" onclick="viewOrderHistory()">View Order History</button>`;
+                let addrHtml = userData.addresses.map((a, i) => `
+                    <div class="address-box ${i === userData.selectedAddrIndex ? 'selected' : ''}" onclick="setAddr(${i})">
+                        <b>Address ${i+1}</b><br>${a}
+                    </div>`).join('');
+                body.innerHTML = `<h3>Profile</h3>
+                <p><b>Name:</b> ${userData.name}</p>
+                <h4>Your Saved Addresses</h4>
+                ${addrHtml}
+                <textarea id="newAddr" class="input-group" placeholder="Add new address..."></textarea>
+                <button class="btn-action" style="background:var(--primary); color:white" onclick="addAddress()">+ Add New Address</button>
+                <button class="btn-action" style="background:#fee2e2; color:#ef4444" onclick="logout()">Logout</button>`;
             }
-            document.getElementById("profileBody").innerHTML = html;
             document.getElementById("profileModal").style.display = "block";
         }
 
-        function saveName() {
-            const name = document.getElementById("userName").value.trim();
-            if (name) { userData.name = name; localStorage.setItem('ht_user', JSON.stringify(userData)); document.getElementById("userBtn").innerText = name; openProfile(); }
-        }
-        function addAddress() {
-            const addr = document.getElementById("newAddress").value.trim();
-            if (addr) { userData.addresses.push(addr); localStorage.setItem('ht_user', JSON.stringify(userData)); openProfile(); }
-        }
-        function selectAddress(i) { userData.selectedAddrIndex = i; localStorage.setItem('ht_user', JSON.stringify(userData)); openProfile(); }
-        function viewOrderHistory() {
-            closeModals();
-            let html = userData.orderHistory.length === 0 ? '<div class="no-orders">No orders yet</div>' : '';
-            userData.orderHistory.forEach(order => {
-                html += `<div class="order-history-item"><div class="order-header"><div class="order-date">${order.date}</div><div class="order-total">₹${order.total}</div></div><div class="order-items">${order.items.replace(/\n/g, '<br>')}</div></div>`;
-            });
-            document.getElementById("orderHistoryList").innerHTML = html;
-            document.getElementById("orderHistoryModal").style.display = "block";
-        }
-        function closeModals() { document.querySelectorAll('.modal').forEach(m => m.style.display = 'none'); }
-        function openFilterModal() { document.getElementById('filterOverlay').style.display = 'block'; document.getElementById('filterModal').style.display = 'block'; }
-        function closeFilterModal() { document.getElementById('filterOverlay').style.display = 'none'; document.getElementById('filterModal').style.display = 'none'; }
-        function selectFilter(filter) {
-            currentFilter = filter;
-            document.querySelectorAll('.filter-option').forEach(opt => opt.classList.remove('selected'));
-            document.querySelector(`[data-filter="${filter}"]`).classList.add('selected');
-            document.getElementById('filterBtn').classList.toggle('active', filter !== 'all');
-            renderProducts(); closeFilterModal();
+        function saveUser() {
+            userData.name = document.getElementById("inName").value;
+            if(!userData.name) return alert("Please enter your name");
+            saveData(); openProfile();
         }
 
-        if (userData.name) document.getElementById("userBtn").innerText = userData.name;
-        buildCategories();
+        function addAddress() {
+            const val = document.getElementById("newAddr").value;
+            if(val) { userData.addresses.push(val); saveData(); openProfile(); }
+        }
+
+        function setAddr(i) { userData.selectedAddrIndex = i; saveData(); openProfile(); }
+        function saveData() { localStorage.setItem('ht_user', JSON.stringify(userData)); updateUI(); }
+        function updateUI() { document.getElementById("userBtn").innerText = userData.name || "Login"; }
+        function logout() { localStorage.clear(); location.reload(); }
+        function closeModals() { document.querySelectorAll('.modal').forEach(m => m.style.display = "none"); }
+
+        function openCart() {
+            const list = document.getElementById("cartList");
+            let groups = {}, grand = 0;
+            for (let k in cart) {
+                const [pid, vid] = k.split("_").map(Number);
+                const p = products.find(x => x.id === pid);
+                const v = p.variants.find(x => x.vid === vid);
+                if (!groups[p.name]) groups[p.name] = { items: [], total: 0, qty: 0, p: v.price };
+                groups[p.name].items.push(`${v.label} (${cart[k]})`);
+                groups[p.name].total += (cart[k] * v.price);
+                groups[p.name].qty += cart[k];
+                grand += (cart[k] * v.price);
+            }
+            
+            let html = "";
+            for (let b in groups) {
+                html += `<div style="border-bottom:1px solid #f1f5f9; padding:10px 0;">
+                    <div style="font-weight:700;">${b} ${groups[b].qty} x ${groups[b].p} = ₹${groups[b].total}</div>
+                    <div style="font-size:13px; color:#64748b">${groups[b].items.join(', ')}</div>
+                </div>`;
+            }
+            list.innerHTML = html;
+            document.getElementById("cartGrandTotal").innerText = "Total: ₹" + grand;
+            document.getElementById("cartModal").style.display = "block";
+        }
+
+        function sendToWhatsapp() {
+            if (!userData.name || userData.addresses.length === 0) { alert("Please login and add address first"); return openProfile(); }
+            const addr = userData.addresses[userData.selectedAddrIndex];
+            let msg = `*ORDER FROM ${userData.name}*\n📍 ${addr}\n\n`;
+            let groups = {}, grand = 0;
+            
+            for (let k in cart) {
+                const [pid, vid] = k.split("_").map(Number);
+                const p = products.find(x => x.id === pid);
+                const v = p.variants.find(x => x.vid === vid);
+                if (!groups[p.name]) groups[p.name] = { items: [], total: 0, qty: 0, p: v.price };
+                groups[p.name].items.push(`${v.label} ${cart[k]}`);
+                groups[p.name].total += (cart[k] * v.price);
+                groups[p.name].qty += cart[k];
+                grand += (cart[k] * v.price);
+            }
+
+            for (let b in groups) {
+                msg += `*${b} ${groups[b].qty} x ${groups[b].p} = ₹${groups[b].total}*\n`;
+                groups[b].items.forEach(i => msg += i + "\n");
+                msg += `\n`;
+            }
+            msg += `*TOTAL BILL: ₹${grand}*`;
+            window.open(`https://wa.me/${WHATSAPP}?text=` + encodeURIComponent(msg));
+        }
+
+        updateUI();
         renderProducts();
     </script>
 </body>
 </html>
-
