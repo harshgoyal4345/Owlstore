@@ -1226,6 +1226,7 @@
         // Returns false if validation fails (prevents navigation).
         // ============================================================
         function prepareWhatsappOrder() {
+            // ── Validate first (no heavy work yet) ──
             if (!userData.name || userData.addresses.length === 0) {
                 alert("Please set up your profile first");
                 closeModals();
@@ -1242,12 +1243,12 @@
                 const priceInfo = getTierPricingInfo(p, v, qty);
                 if (!v.pickupOnly) deliverableTotal += qty * priceInfo.price;
             }
-
             if (deliverableTotal > 0 && deliverableTotal < MIN_ORDER_VALUE) {
                 alert(`Minimum order value for delivery is ₹${MIN_ORDER_VALUE}. Your deliverable items total is ₹${deliverableTotal}.`);
                 return;
             }
 
+            // ── Build message ──
             let msg = `*New Order from ${userData.name}*\n\n*Address:*\n${userData.addresses[userData.selectedAddrIndex]}\n\n*Items:*\n`;
             const brandGroups = {};
             let total = 0, totalSavings = 0;
@@ -1293,22 +1294,17 @@
             }
             msg += `\n\n*Total: ₹${finalTotal}*`;
 
-            // Save to order history
+            // ── Open WhatsApp FIRST — must happen as close to the tap as possible ──
+            const waUrl = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
+            window.open(waUrl, "_blank");
+
+            // ── Save history & clear cart after ──
             const order = { date: new Date().toLocaleDateString(), items: msg, total: finalTotal };
             userData.orderHistory.unshift(order);
             localStorage.setItem('ht_user', JSON.stringify(userData));
-
-            // window.open() called directly inside an onclick handler = trusted user gesture.
-            // Chrome Android allows this and opens WhatsApp correctly.
-            const waUrl = `https://wa.me/${WHATSAPP}?text=` + encodeURIComponent(msg);
-            window.open(waUrl);
-
-            // Clear cart and close modal
-            setTimeout(() => {
-                cart = {};
-                updateCartFab();
-                closeModals();
-            }, 500);
+            cart = {};
+            updateCartFab();
+            closeModals();
         }
 
         function openProfile() {
